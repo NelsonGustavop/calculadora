@@ -2,7 +2,7 @@ package com.Slayer.mercado.domain.enums;
 
 public enum Nivel {
 
-	FUNCIONARIO(0, "ROLE_FUNCIONARIO"), ADM(1,"ROLE_ADM");
+	FUNCIONARIO(0, "ROLE_FUNCIONARIO"), Tecnico(1,"ROLE_ADM");
 
 	private Integer codigo;
 	private String descricao;
