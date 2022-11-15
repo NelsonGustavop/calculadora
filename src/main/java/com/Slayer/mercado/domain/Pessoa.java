@@ -6,8 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +18,7 @@ import javax.persistence.Id;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.Slayer.mercado.domain.enums.Nivel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public abstract class Pessoa implements Serializable {
@@ -25,11 +29,15 @@ public abstract class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
 	protected String nome;
-	protected Set<Integer> nivel = new HashSet<>();
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
 	@CPF
 	@Column(unique = true)
 	protected String cpf;
+
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "NIVEL")
+	protected Set<Integer> nivel = new HashSet<>();
 
 	public Pessoa() {
 		addNivel(Nivel.FUNCIONARIO);
