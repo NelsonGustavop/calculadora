@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.Slayer.mercado.domain.enums.Nivel;
+
 @Entity
 public class Tecnico extends Pessoa implements Serializable {
 
@@ -18,6 +20,7 @@ public class Tecnico extends Pessoa implements Serializable {
 
 	public Tecnico() {
 		super();
+		
 	}
 
 	public Tecnico(Integer id, String nome, @CPF String cpf) {

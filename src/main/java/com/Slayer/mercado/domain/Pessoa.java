@@ -39,6 +39,7 @@ public abstract class Pessoa implements Serializable {
 	@CollectionTable(name = "NIVEL")
 	protected Set<Integer> nivel = new HashSet<>();
 
+	
 	public Pessoa() {
 		addNivel(Nivel.FUNCIONARIO);
 	}
